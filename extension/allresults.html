@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request History</title>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="maintitle" class="maintitle">
+        <div class="mr">Mr.G AI</div>
+        <div class="searchoptions">
+            
+            <button id="refresh">Refresh</button>
+            <label for="search">Search:</label>
+            <input type="text" id="search" name="search" placeholder="Search for requests...">
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="all" selected="selected">All</option>
+                <option value="queued">Queued</option>
+                <option value="requested">Requested</option>
+                <option value="finished">Finished</option>
+                <option value="failed">Failed</option>
+                </select>
+           
+            <label for="order">Order:</label>
+            <select id="order" name="order">
+                <option value="desc" selected="selected">Descending</option>
+                <option value="asc" >Ascending</option>
+            </select>
+
+        </div>
+    </div>
+    <div id="requestList" style=" top: 50px; position: relative; "></div>
+
+    <script src="allresults.js">
+
+</script>
+    </body>
+</html>

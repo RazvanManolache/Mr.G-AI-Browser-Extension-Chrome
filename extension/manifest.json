@@ -1,0 +1,19 @@
+{
+  "name": "Mr.G-AI",
+  "version": "0.1.0",
+  "description": "Official extension of Mr.G AI",
+  "action": {
+    "default_popup": "config.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+        "matches": ["*://*/*"],
+        "js": ["content_script.js"]
+    }
+  ],
+  "permissions": [ "storage", "unlimitedStorage", "contextMenus", "tabs", "activeTab", "alarms" ],
+  "manifest_version": 3
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <style>
+        table {
+            width: 100%;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Results</h1>
+    <table id="resultsTable">
+        <tr>
+            <th>Date</th>
+            <th>UUID</th>
+            <th>Result</th>
+        </tr>
+    </table>
+
+    <script>
+        // get the 'requestHistory' item from local storage
+        chrome.storage.local.get('requestHistory', function(result) {
+            let requestHistory = result.requestHistory || [];
+            // sort the requests by date in descending order
+            requestHistory.sort((a, b) => new Date(b.date) - new Date(a.date));
+            // get the table element
+            let table = document.getElementById('resultsTable');
+            for (let request of requestHistory) {
+                // create a new row and cells
+                let row = document.createElement('tr');
+                let dateCell = document.createElement('td');
+                let uuidCell = document.createElement('td');
+                let resultCell = document.createElement('td');
+                // set the text of the cells
+                dateCell.textContent = request.date;
+                uuidCell.textContent = request.data.uuid;
+                resultCell.textContent = request.result;
+                // append the cells to the row
+                row.appendChild(dateCell);
+                row.appendChild(uuidCell);
+                row.appendChild(resultCell);
+                // append the row to the table
+                table.appendChild(row);
+            }
+        });
+    </script>
+</body>
+</html>

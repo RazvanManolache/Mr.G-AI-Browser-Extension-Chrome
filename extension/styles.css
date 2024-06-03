@@ -1,0 +1,82 @@
+.title {
+    display: inline-flex;
+    background: #673ab7;
+    color: white;
+    width: 100%;
+}
+
+.generateButton {
+    background-color: #673ab7;
+    color: white;
+    width: 100%;
+}
+/* Add your CSS styles here */
+.status {
+    padding: 0 20px;
+    border: 1px solid black;
+    margin: 0 10px;
+}
+
+.details-link {
+    background-color: #673ab7;
+    color: white;
+    display: block;
+    padding: 0 0 0 20px
+}
+
+.timestamp {
+    float: right;
+}
+
+.finished {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.queued {
+    background-color: #FFD700;
+    color: white;
+}
+
+.requested {
+    background-color: #FFA500;
+    color: white;
+}
+
+.failed {
+    background-color: #FF0000;
+    color: white;
+}
+
+.result {
+    margin: 10px;
+    border: 3px solid #673ab7;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.maintitle {
+    background: #673ab7;
+    display: flex;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+}
+
+.mr {
+    flex: 1;
+    text-align: left;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.searchoptions {
+    padding: 0 20px 0 0;
+    flex: 1;
+    text-align: right;
+}
