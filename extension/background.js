@@ -157,9 +157,9 @@ function makeSocket(address){
             else if (message.type === 'resultPushed' && message.data.uuid) {
 
                 chrome.storage.local.get(['requestHistory'], function (result) {
-                    var uuid = message.data.run_uuid
+                    var uuid = message.data.batch_request_uuid
                     let requestHistory = result.requestHistory || [];
-                    let request = requestHistory.find(request => request.run_uuid && request.run_uuid.includes(uuid));
+                    let request = requestHistory.find(request => request.batch_request_uuids && request.batch_request_uuids.includes(uuid));
 
                     if (request) {
                         if (!request.result) {
@@ -167,7 +167,7 @@ function makeSocket(address){
                         }
                         request.result[uuid] = message.data.outputs;
                         var notFound = false;
-                        request.run_uuid.forEach(ruuid => {
+                        request.batch_request_uuids.forEach(ruuid => {
                             if (!request.result[ruuid]) {
                                 notFound = true;
                             }
@@ -187,9 +187,9 @@ function makeSocket(address){
             else if (message.type === 'executionFinished' && message.data) {
                 chrome.storage.local.get(['requestHistory'], function (result) {
                     let requestHistory = result.requestHistory || [];
-                    let request = requestHistory.find(request => request.run_uuid && request.run_uuid.includes(message.data.run_uuid));
+                    let request = requestHistory.find(request => request.batch_request_uuids && request.batch_request_uuids.includes(message.data.batch_request_uuid));
                     if (request) {
-                        sendThroughSocket({ type: 'getResult', uuid: message.data.run_uuid });
+                        sendThroughSocket({ type: 'getResult', uuid: message.data.batch_request_uuid });
                     }
                 });
             }
@@ -199,7 +199,7 @@ function makeSocket(address){
                     let requestHistory = result.requestHistory || [];
                     let request = requestHistory.find(request => request.requestId === message.data.requestId);
                     if (request) {
-                        request.run_uuid = message.data.result.run_uuid;
+                        request.batch_request_uuid = message.data.result.batch_request_uuid;
                         request.status = 'queued';
                         chrome.storage.local.set({ requestHistory: requestHistory }, function () {
 
