@@ -1,16 +1,9 @@
 {
-  "name": "Mr.G-AI",
+  "name": "mrg-ai-chrome",
   "version": "0.1.0",
-  "description": "My Chrome Extension",
+  "description": "Mr.G AI Chrome extension",
   "private": true,
   "scripts": {
-    "watch": "node ./node_modules/webpack/bin/webpack.js --mode=development --watch --config config/webpack.config.js",
-    "build": "node ./node_modules/webpack/bin/webpack.js --mode=production --config config/webpack.config.js"
-  },
-  "dependencies": {
-    "webpack": "^5.91.0"
-  },
-  "devDependencies": {
-    "webpack-cli": "^5.1.4"
+    "build": "python ../scripts/package.py"
   }
 }
